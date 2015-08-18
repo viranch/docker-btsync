@@ -1,0 +1,17 @@
+{
+  "device_name" : "{{ .Env.HOSTNAME }}",
+  "listening_port" : 3369,
+  "storage_path" : "/var/lib/btsync",
+  "use_upnp" : false,
+  "folder_defaults.use_relay" : false,
+  "folder_defaults.use_tracker" : false,
+  "send_statistics" : false,
+  "shared_folders" :
+  [
+    {
+      "dir" : "/share",
+      "secret" : "{{ .Env.SECRET }}",
+      "known_hosts" : [ "{{ replace .Env.PEERS "," "\", \"" -1 }}" ]
+    }
+  ]
+}
